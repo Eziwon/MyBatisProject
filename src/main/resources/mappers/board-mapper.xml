@@ -1,0 +1,26 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+    <insert id="insertBoard">
+        insert into BBOARD (category, name, address, hours, phone, dayoff, content) values (
+        #{category}, #{name}, #{address}, #{hours}, #{phone}, #{dayoff}, #{content}
+        )
+    </insert>
+    <update id="updateBoard">
+        update BBOARD
+        set category=#{category}, name=#{name}, address=#{address}, hours=#{hours}, phone=#{phone}, dayoff=#{dayoff}, content=#{content}
+        where seq=#{seq}
+    </update>
+    <delete id="deleteBoard">
+        delete from BBOARD where seq=#{seq}
+    </delete>
+    <select id="getBoard" resultType="board">
+       select * from BBOARD where seq = #{seq}
+    </select>
+
+    <select id="getBoardList" resultType="board">
+        select * from BBOARD order by seq desc
+    </select>
+</mapper>
